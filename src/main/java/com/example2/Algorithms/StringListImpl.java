@@ -16,10 +16,10 @@ public class StringListImpl implements StringListInterface {
     @Override
     public String add(String item) {
 if (Objects.isNull(item)){
-    throw new IllegalArgumentException("We cant add null");
+    throw new NullException();
 }
 if (capacity >=list.length){
-   throw new IllegalArgumentException("List is full");
+   throw new StorageIsFullException();
 }
 list[capacity++]= item;
         return item;
@@ -28,13 +28,13 @@ list[capacity++]= item;
     @Override
     public String add(int index, String item) {
         if (capacity >=list.length){
-            throw new IllegalArgumentException("List is full");
+            throw new StorageIsFullException();
         }
         if (Objects.isNull(item)){
-            throw new IllegalArgumentException("We cant add null");
+            throw new NullException();
         }
         if(index<0){
-            throw new IllegalArgumentException("Index cannot be negative");
+            throw new NegativeException();
         }
         if(index> capacity){
             throw new IllegalArgumentException("Index: "+ index+ "size: " + capacity);
@@ -48,10 +48,10 @@ list[capacity++]= item;
     public String set(int index, String item) {
 
         if (Objects.isNull(item)){
-            throw new IllegalArgumentException("We cant add null");
+            throw new NullException();
         }
         if(index<0){
-            throw new IllegalArgumentException("Index cannot be negative");
+            throw new NegativeException();
         }
         if(index> capacity){
             throw new IllegalArgumentException("Index: "+ index+ "size: " + capacity);
@@ -63,7 +63,7 @@ list[capacity++]= item;
     public String remove(String item) {
 
         if (Objects.isNull(item)){
-            throw new IllegalArgumentException("We cant add null");
+            throw new NullException();
         }
         int indexForRemove=-1;
         for (int i = 0; i < capacity; i++) {
@@ -73,7 +73,7 @@ list[capacity++]= item;
             }
         }
             if (indexForRemove==-1){
-                throw new IllegalArgumentException("Element not found");
+                throw new ElementNotFound();
             }
         return remove(indexForRemove);
     }
@@ -81,7 +81,7 @@ list[capacity++]= item;
     @Override
     public String remove(int index) {
         if(index<0){
-            throw new IllegalArgumentException("Index cannot be negative");
+            throw new NegativeException();
         }
         if(index>= capacity){
             throw new IllegalArgumentException("Index: "+ index+ "size: " + capacity);
@@ -95,7 +95,7 @@ list[capacity++]= item;
     @Override
     public boolean contains(String item) {
         if (Objects.isNull(item)){
-            throw new IllegalArgumentException("We cant add null");
+            throw new NullException();
         }
         for (int i = 0; i < capacity; i++) {
             if(list[i].equals(item)){
@@ -108,7 +108,7 @@ list[capacity++]= item;
     @Override
     public int indexOf(String item) {
         if (Objects.isNull(item)){
-            throw new IllegalArgumentException("We cant add null");
+            throw new NullException();
         }
         int index=-1;
         for (int i = 0; i < capacity; i++) {
@@ -123,7 +123,7 @@ list[capacity++]= item;
     @Override
     public int lastIndexOf(String item) {
         if (Objects.isNull(item)){
-            throw new IllegalArgumentException("We cant add null");
+            throw new NullException();
         }
         int index=-1;
         for (int i = capacity-1; i >=0 ; i--) {
@@ -139,7 +139,7 @@ list[capacity++]= item;
     @Override
     public String get(int index) {
         if(index<0){
-            throw new IllegalArgumentException("Index cannot be negative");
+            throw new NegativeException();
         }
         if(index>= capacity){
             throw new IllegalArgumentException("Index: "+ index+ "size: " + capacity);

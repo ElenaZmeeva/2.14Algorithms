@@ -8,7 +8,7 @@ public class StringList {
 
     public StringList(String item, int index) {
         this.item = item;
-        this.index=index;
+        this.index = index;
     }
 
     public String getItem() {
