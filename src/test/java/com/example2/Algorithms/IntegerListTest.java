@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class IntegerListTest {
 
-    private final IntegerList out = new IntegerListImpl() {
+    private final IntegerList out = new IntegerListImpl();
 
         @Test
         public void shouldAddInteger() {
@@ -22,8 +22,7 @@ public class IntegerListTest {
         @Test
         public void shouldRemoveInteger() {
             Integer result = out.add(1);
-
-            Assertions.assertThat(out.remove(1)).isEqualTo(result);
+            Assertions.assertThat(out.remove(0)).isEqualTo(result);
         }
 
         @Test
@@ -78,7 +77,7 @@ public class IntegerListTest {
         @Test
         public void checkIsEmpty() {
             Integer result = out.add(2);
-            out.remove(2);
+            out.remove(0);
             Assertions.assertThat(out.isEmpty());
         }
 
@@ -88,4 +87,3 @@ public class IntegerListTest {
             Assertions.assertThat(out.toArray());
         }
     };
-    }
